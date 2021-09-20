@@ -1,0 +1,133 @@
+.custom-card-style {
+  margin: 16px;
+  text-align: left;
+  cursor: pointer;
+  /* border: 10px solid #fff !important; */
+  background-color: #272a3e !important;
+  min-height: 300px;
+}
+
+.custom-card-header {
+  /* border: 2px solid red !important; */
+  position: relative;
+}
+.custom-card-style-r1 {
+  font-size: 20px;
+  text-transform: uppercase;
+  /* border: 2px solid green; */
+  width: 50%;
+  margin-left: 50%;
+  padding: 0;
+  /* text-align: right; */
+}
+.custom-card-style-r1 > h3 {
+  color: #fff;
+  margin: 0;
+}
+.custom-card-style-r2 {
+  display: flex;
+  /* border: 2px solid blue; */
+  justify-content: space-between;
+}
+.card-top-box {
+  /* border: 2px solid yellow; */
+  position: absolute;
+  color: #fff;
+  font-weight: 600;
+  text-align: center;
+  top: -25px;
+  min-width: 120px;
+  padding: 0 2px;
+  border-radius: 10px;
+}
+
+.card-top-box > h3 {
+  font-weight: 800;
+  font-size: 19px;
+  color: #fff;
+  border-top: 2px solid #fff;
+}
+.card-top-box > h3 ~ h3 {
+  border: none;
+}
+
+.custom-card-style p {
+  margin: 0;
+  /* border: 2px solid black; */
+}
+
+.custom-card-body {
+  /* border: 2px solid blue; */
+  display: flex;
+  align-items: center;
+  margin-top: 10px;
+  height: 175px;
+}
+
+.custom-card-body > div {
+  flex-grow: 0.6;
+  /* border: 2px solid yellow; */
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  justify-content: space-evenly;
+  align-items: flex-start;
+}
+.custom-card-body > div > p {
+  display: flex;
+  align-items: center;
+  /* text-align: center; */
+  color: #fff;
+  font-weight: 600;
+}
+.custom-card-body > div > p > .purple-backs {
+  background-color: #cb52e3;
+  color: #fff;
+  padding: 10px;
+  border-radius: 20px;
+  width: 70px;
+  margin-right: 10px;
+  text-align: center;
+}
+.custom-card-body > p {
+  flex-grow: 0.4;
+  color: #fff;
+  border-left: 5px solid #cb52e3;
+  padding-left: 5px;
+  width: 55%;
+  overflow: hidden;
+  min-height: 120px;
+  max-height: 100%;
+  font-size: 14.3px;
+}
+
+.custom-card-footer {
+  padding: 10px;
+  /* border: 1px solid green; */
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.card-icon-style {
+  font-size: 30px;
+  color: #fff !important;
+}
+
+.custom-card-footer > div {
+  /* border: 1px solid green; */
+  display: flex;
+  align-items: center;
+  width: 100px;
+}
+
+@media screen and (max-width: 500px) {
+  .custom-card-style-r1 {
+    text-align: right;
+  }
+  .ant-layout-sider-zero-width-trigger {
+    top: 0 !important;
+  }
+  .ant-layout-sider-children {
+    background: transparent !important;
+  }
+}

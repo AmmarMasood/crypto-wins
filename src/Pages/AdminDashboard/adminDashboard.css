@@ -1,0 +1,12 @@
+.admin-dashboard-selector {
+  text-align: center;
+  font-size: 18px;
+  margin: 10px 0;
+  cursor: pointer;
+  padding: 10px 0;
+  transition: all 0.3s;
+}
+
+.admin-dashboard-selector:hover {
+  background-color: #f9c74f;
+}

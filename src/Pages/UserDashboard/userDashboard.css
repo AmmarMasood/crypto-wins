@@ -1,0 +1,132 @@
+#components-layout-demo-fixed-sider {
+  width: 300px;
+}
+.ant-layout-sider {
+  /* width: 250px !important;
+  max-width: 250px !important; */
+}
+#components-layout-demo-fixed-sider .logo {
+  height: 32px;
+  margin: 16px;
+  background: rgba(255, 255, 255, 0.2);
+}
+.site-layout-background {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
+  grid-gap: 30px;
+  margin-right: 20px;
+}
+.site-layout-background > div {
+  /* min-width: 100%; */
+  max-width: 500px;
+}
+.ant-layout-header {
+  height: 64px;
+  padding: 0px 30px !important;
+  color: rgba(0, 0, 0, 0.85);
+  line-height: 64px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  background: #1e1e2b !important;
+}
+.site-layout .site-layout-background {
+  background: #1e1e2b;
+}
+
+.ant-layout-sider {
+  min-width: 0;
+  background: #50248f !important;
+  border: none !important;
+  position: fixed !important;
+  transition: all 0.1s !important;
+  z-index: 10;
+  height: 100vh;
+}
+.ant-menu-vertical .ant-menu-item::after,
+.ant-menu-vertical-left .ant-menu-item::after,
+.ant-menu-vertical-right .ant-menu-item::after,
+.ant-menu-inline .ant-menu-item::after {
+  border: none !important;
+}
+.ant-input-textarea-show-count::after {
+  color: #fff !important;
+}
+
+.ant-menu-inline,
+.ant-menu-vertical,
+.ant-menu-vertical-left {
+  border: none !important;
+}
+
+.custom-card-explainer-header {
+  /* border: 2px solid yellow; */
+  position: relative;
+}
+.custom-card-explainer-body {
+  /* border: 2px solid red; */
+  padding: 10px;
+}
+.custom-card-explainer-header-sticker {
+  position: absolute;
+  padding: 10px;
+  top: -35px;
+  left: 10px;
+  min-width: 100px;
+  text-align: center;
+  border-radius: 10px;
+}
+.custom-card-explainer-header-sticker > span > h3 {
+  color: #fff;
+  font-size: 20px;
+  font-weight: 900;
+  padding: 0;
+  margin: 0;
+}
+.custom-card-explainer-header-sticker > h3 {
+  color: #fff;
+  font-size: 20px;
+  font-weight: 900;
+  padding: 0;
+  margin: 0;
+  border-top: 2px solid #fff;
+}
+
+.custom-card-explainer-header-sticker > h3 ~ h3 {
+  border: none;
+}
+.custom-card-explaier-cryptoname {
+  /* border: 2px solid white; */
+  text-align: right;
+  font-size: 30px;
+  color: #fff;
+  float: right;
+  padding: 10px;
+}
+.custom-card-explaier-cryptoname > h3 {
+  color: #fff;
+}
+
+.ant-layout-sider-children {
+  background: #1e1e2b !important;
+}
+@media screen and (max-width: 500px) {
+  .ant-layout-header {
+    display: flex;
+    flex-direction: column-reverse;
+    align-items: flex-end;
+    /* margin-bottom: 50px; */
+  }
+  .site-layout-background {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    grid-gap: 10px;
+    margin-right: 20px;
+  }
+  .site-layout-background > div {
+    width: 100%;
+  }
+  .ant-layout-content {
+    padding: 20px 0 !important;
+  }
+}
