@@ -1,13 +1,5 @@
 import React, { useState, useContext } from "react";
 // @material-ui/core components
-import { makeStyles } from "@material-ui/core/styles";
-import GridItem from "../../Components/MaterialUI/Grid/GridItem";
-import GridContainer from "../../Components/MaterialUI/Grid/GridContainer.js";
-import Button from "../../Components/MaterialUI/CustomButtons/Button.js";
-import Card from "../../Components/MaterialUI/Card/Card.js";
-import CardHeader from "../../Components/MaterialUI/Card/CardHeader.js";
-import CardBody from "../../Components/MaterialUI/Card/CardBody.js";
-import CardFooter from "../../Components/MaterialUI/Card/CardFooter.js";
 import { Link, withRouter } from "react-router-dom";
 import "./login.css";
 import { loginUser } from "../../Services/auth";
@@ -20,7 +12,7 @@ import Logo from "../../Assets/logo-transparent.png";
 import GoogleIcon from "../../Assets/icons8-google-48.png";
 import { authWithTwitter } from "../../Services/users";
 
-import { Form, Input } from "antd";
+import { Form, Input, Card, Button } from "antd";
 import { UserOutlined, LockOutlined, LoadingOutlined } from "@ant-design/icons";
 const styles = {
   cardCategoryWhite: {
@@ -41,10 +33,7 @@ const styles = {
   },
 };
 
-const useStyles = makeStyles(styles);
-
 function Login(props) {
-  const classes = useStyles();
   const [userInfo, setUserInfo] = useContext(userInfoContext);
   const [loading, setLoading] = useState(false);
   const [formValues, setFormValues] = useState({});
@@ -137,16 +126,16 @@ function Login(props) {
       style={{ textAlign: "center", backgroundColor: "transparent" }}
     >
       <img height="100px" width="200px" src={Logo} alt="" />
-      <GridContainer>
-        <GridItem xs={12} sm={12} md={12}>
+      <div>
+        <div>
           <Card style={{ backgroundColor: "#272A3E" }}>
-            <CardHeader color="primary">
-              <h1 className={classes.cardTitleWhite}>LOGIN</h1>
+            <div color="primary">
+              <h1 style={{ color: "#fff" }}>LOGIN</h1>
               {/* <p className={classes.cardCategoryWhite}>Please login with your email or login with social media networks</p> */}
-            </CardHeader>
-            <CardBody>
-              <GridContainer>
-                <GridItem xs={12} sm={12} md={12}>
+            </div>
+            <div>
+              <div>
+                <div style={{ padding: "20px" }}>
                   <Form
                     name="normal_login"
                     className="login-form"
@@ -200,7 +189,11 @@ function Login(props) {
                           type="primary"
                           htmlType="submit"
                           className="login-form-button"
-                          style={{ marginRight: "5px" }}
+                          style={{
+                            marginRight: "5px",
+                            background: "#f78641",
+                            borderColor: "#f78641",
+                          }}
                           disabled={loading}
                           color="primary"
                         >
@@ -219,11 +212,11 @@ function Login(props) {
                       </Form.Item>
                     )}
                   </Form>
-                </GridItem>
-              </GridContainer>
-            </CardBody>
+                </div>
+              </div>
+            </div>
 
-            <GridContainer
+            <div
               style={{
                 display: "flex",
                 flexDirection: "column",
@@ -273,10 +266,10 @@ function Login(props) {
                   cookiePolicy={"single_host_origin"}
                 />
               </div>
-            </GridContainer>
+            </div>
           </Card>
-        </GridItem>
-      </GridContainer>
+        </div>
+      </div>
       <Link to="/">
         <Button
           style={{
@@ -284,6 +277,10 @@ function Login(props) {
             width: "100%",
             backgroundColor: "#CB52E3",
             color: "#fff",
+            // padding: "10px",
+            background: "#f78641",
+            borderColor: "#f78641",
+            border: "none",
           }}
         >
           Continue without login

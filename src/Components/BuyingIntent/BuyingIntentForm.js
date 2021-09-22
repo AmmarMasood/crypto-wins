@@ -1,11 +1,8 @@
 import React, { useState, useEffect } from "react";
-import { Button, Form, Input, Select } from "antd";
+import { Button, Form, Input, Select, Card } from "antd";
 import { LoadingOutlined, CloseCircleOutlined } from "@ant-design/icons";
 import { createIntent } from "../../Services/buyingIntent";
 import { getAllName } from "../../Services/cryptoNames";
-import Card from "../../Components/MaterialUI/Card/Card.js";
-import CardHeader from "../../Components/MaterialUI/Card/CardHeader.js";
-import CardBody from "../../Components/MaterialUI/Card/CardBody.js";
 import Modal from "react-modal";
 import useWindowDimensions from "../../Helpers/useWindowDimensions";
 
@@ -89,9 +86,17 @@ function BuyingIntentForm({ isModalVisible, setIsModalVisible, fetchIntents }) {
           borderRadius: "20px",
         }}
       />
-      <Card style={{ marginBottom: "0", backgroundColor: "#272A3E" }}>
-        <CardHeader color="primary">Create Buying Intent</CardHeader>
-        <CardBody>
+      <Card
+        style={{
+          marginBottom: "0",
+          backgroundColor: "#272A3E",
+          padding: "20px",
+        }}
+      >
+        <div style={{ textAlign: "center" }}>
+          <h1 style={{ color: "#fff" }}>Create Buying Intent</h1>
+        </div>
+        <div>
           <Form layout="vertical" form={form} onFinish={handleFinish}>
             <Form.Item label="Select intent type" name="type">
               <Select
@@ -210,7 +215,7 @@ function BuyingIntentForm({ isModalVisible, setIsModalVisible, fetchIntents }) {
               </Form.Item>
             )}
           </Form>
-        </CardBody>
+        </div>
       </Card>
     </Modal>
   );

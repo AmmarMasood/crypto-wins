@@ -1,17 +1,13 @@
 import React, { useContext, useState } from "react";
 import "./card.css";
-import { Button, Card as AntdCard } from "antd";
+import { Button, Card } from "antd";
 import { userInfoContext } from "../../Contexts/UserStore";
 import {
   subscribeToIntent,
   unsubscribeToIntent,
 } from "../../Services/buyingIntent";
-import MUICARD from "../MaterialUI/Card/Card";
-import CardBody from "../MaterialUI/Card/CardBody";
-import CardHeader from "../MaterialUI/Card/CardHeader";
-import CardFooter from "../MaterialUI/Card/CardFooter";
-import { BellOutlined } from "@ant-design/icons";
 import { ReactComponent as Bell } from "../../Assets/bell.svg";
+import useWindowDimensions from "../../Helpers/useWindowDimensions";
 
 function BuyingIntentCard({
   data,
@@ -21,6 +17,7 @@ function BuyingIntentCard({
   subscribeToUser,
 }) {
   const [loading, setLoading] = useState(false);
+  const { width } = useWindowDimensions();
   const [userInfo, setUserInfo] = useContext(userInfoContext);
 
   const addUserToIntent = async (intentId) => {
@@ -82,21 +79,25 @@ function BuyingIntentCard({
   };
 
   return (
-    <MUICARD
+    <Card
       className="custom-card-style"
       loading={loading}
-      style={{ cursor: "auto", minHeight: "300px" }}
+      style={{
+        cursor: "auto",
+        minHeight: "270px",
+        marginBottom: width < 500 ? "40px" : "20px",
+      }}
       //   onClick={() => onClick(data)}
     >
-      <CardHeader>
+      <div>
         {" "}
         <div className="custom-card-style-r1" style={{ marginLeft: "43%" }}>
           {data.buyingCryptoName && data.buyingCryptoName.length > 0 && (
-            <h3>{data.buyingCryptoName}</h3>
+            <h3 style={{ padding: "10px" }}>{data.buyingCryptoName}</h3>
           )}
 
           {data.sellingCryptoName && data.sellingCryptoName.length > 0 && (
-            <h3>{data.sellingCryptoName}</h3>
+            <h3 style={{ padding: "10px" }}>{data.sellingCryptoName}</h3>
           )}
         </div>
         {/* <div className="card-top-box" style={{backgroundColor: "#43AA8B #F94144"}}> */}
@@ -104,7 +105,7 @@ function BuyingIntentCard({
           <>
             <div
               className="card-top-box"
-              style={{ backgroundColor: "#43AA8B" }}
+              style={{ backgroundColor: "#43AA8B", top: "-25px" }}
             >
               <h3 style={{ border: "none" }}>BUYING @</h3>
               <h3
@@ -122,7 +123,7 @@ function BuyingIntentCard({
           <>
             <div
               className="card-top-box"
-              style={{ backgroundColor: "#F94144" }}
+              style={{ backgroundColor: "#F94144", top: "-25px" }}
             >
               <h3 style={{ border: "none" }}>SELLING @</h3>
               <h3
@@ -138,7 +139,7 @@ function BuyingIntentCard({
         )}
         <div className="border-bottom"></div>
         {/* </div> */}
-      </CardHeader>
+      </div>
       {/* <CardHeader>
         
         
@@ -159,8 +160,9 @@ function BuyingIntentCard({
         style={{
           display: "flex",
           alignItems: "flex-start",
-          height: "100%",
+          height: "115px",
           margin: "10px",
+          overflow: "hidden",
         }}
       >
         <span
@@ -299,7 +301,7 @@ function BuyingIntentCard({
           @{data._user.username} {getSubscribtionButton()}
         </span>
       </div>
-    </MUICARD>
+    </Card>
   );
 }
 

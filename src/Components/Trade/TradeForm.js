@@ -7,20 +7,14 @@ import {
   DatePicker,
   Select,
   InputNumber,
+  Card,
 } from "antd";
 import { CloseCircleOutlined, LoadingOutlined } from "@ant-design/icons";
 
 import ImageUploading from "react-images-uploading";
-import {
-  createTrade,
-  getAllTrades,
-  getCoinInfo,
-} from "../../Services/tradeForm";
+import { createTrade } from "../../Services/tradeForm";
 import { getAllName, updateUnsoldCrypto } from "../../Services/cryptoNames";
 import { allNonSoldCoinPricesContext } from "../../Contexts/UserStore";
-import Card from "../../Components/MaterialUI/Card/Card.js";
-import CardHeader from "../../Components/MaterialUI/Card/CardHeader.js";
-import CardBody from "../../Components/MaterialUI/Card/CardBody.js";
 import Modal from "react-modal";
 import useWindowDimensions from "../../Helpers/useWindowDimensions";
 
@@ -173,9 +167,17 @@ function TradeForm({ isModalVisible, setIsModalVisible, fetchTrades }) {
           borderRadius: "20px",
         }}
       />
-      <Card style={{ marginBottom: "0", backgroundColor: "#272A3E" }}>
-        <CardHeader color="primary">Create Trade</CardHeader>
-        <CardBody>
+      <Card
+        style={{
+          marginBottom: "0",
+          backgroundColor: "#272A3E",
+          padding: "20px",
+        }}
+      >
+        <div style={{ textAlign: "center" }}>
+          <h1 style={{ color: "#fff" }}>Create Trade</h1>
+        </div>
+        <div>
           <Form
             layout="vertical"
             form={form}
@@ -338,7 +340,7 @@ function TradeForm({ isModalVisible, setIsModalVisible, fetchTrades }) {
               </Form.Item>
             )}
           </Form>
-        </CardBody>
+        </div>
       </Card>
     </Modal>
   );

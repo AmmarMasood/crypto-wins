@@ -1,22 +1,12 @@
 import React, { useEffect, useState, useRef } from "react";
 import "./card.css";
-import { Card as AntdCard } from "antd";
 import moment from "moment";
-import { fetchCoinsInfo } from "../../Helpers/Coinmarketcap";
 import { TwitterIcon, TwitterShareButton } from "react-share";
-import AttachedSS from "../../Assets/attachement-image.jfif";
-import {
-  BellTwoTone,
-  CameraOutlined,
-  CommentOutlined,
-  BellFilled,
-} from "@ant-design/icons";
-import { getCoinInfo } from "../../Services/tradeForm";
-import MUICARD from "../MaterialUI/Card/Card";
-import CardBody from "../MaterialUI/Card/CardBody";
-import CardHeader from "../MaterialUI/Card/CardHeader";
+import { CameraOutlined, CommentOutlined } from "@ant-design/icons";
+import { Card as AntdCard, Button } from "antd";
+
 import { ReactComponent as Bell } from "../../Assets/bell.svg";
-import { subToUser, unsubToUser } from "../../Services/users";
+import useWindowDimensions from "../../Helpers/useWindowDimensions";
 
 function Card({
   data,
@@ -33,8 +23,7 @@ function Card({
   const [annualYield, setAnnualYield] = useState(0);
   const [percentageGain, setPercentageGain] = useState(0);
   const [outData, setOutData] = useState("");
-
-  const cardRef = useRef(null);
+  const { width } = useWindowDimensions();
 
   useEffect(() => {
     if (data.notYetSold) {
@@ -44,7 +33,7 @@ function Card({
       setPercentageGain(data.percentageGain);
       setProfit(data.profit);
       setAnnualYield(data.annualYield);
-      hideUnwatedCards();
+      // hideUnwatedCards();
     }
   }, [filterType, profit]);
 
@@ -59,51 +48,8 @@ function Card({
     setAnnualYield(data.annualYield);
 
     setLoading(false);
-    hideUnwatedCards();
+    // hideUnwatedCards();
   }
-
-  const hideUnwatedCards = () => {
-    // if (filterType === "wins") {
-    //   if (cardRef.current) {
-    //     if (Math.sign(profit) <= 0) {
-    //       cardRef.current.style.display = "none";
-    //     } else {
-    //       cardRef.current.style.display = "inline";
-    //     }
-    //   }
-    // } else
-    // if (filterType === "loss") {
-    //   if (cardRef.current) {
-    //     if (Math.sign(profit) > 0) {
-    //       cardRef.current.style.display = "none";
-    //     } else {
-    //       cardRef.current.style.display = "inline";
-    //     }
-    //   }
-    // } else
-    // if (filterType === "open") {
-    //   if (cardRef.current) {
-    //     if (!data.notYetSold) {
-    //       cardRef.current.style.display = "none";
-    //     } else {
-    //       cardRef.current.style.display = "inline";
-    //     }
-    //   }
-    // } else
-    // if (filterType === "sold") {
-    //   if (cardRef.current) {
-    //     if (data.notYetSold) {
-    //       cardRef.current.style.display = "none";
-    //     } else {
-    //       cardRef.current.style.display = "inline";
-    //     }
-    //   }
-    // } else {
-    //   if (cardRef.current) {
-    //     cardRef.current.style.display = "inline";
-    //   }
-    // }
-  };
 
   const getSubscribtionButton = () => {
     if (data._user && userInfo.id !== data._user._id.toString()) {
@@ -192,155 +138,152 @@ See what other are trading and why at
     }
   };
   return (
-    <div ref={cardRef}>
-      <MUICARD
-        className="custom-card-style"
-        loading={loading}
-        // onClick={() => onClick(data)}
-      >
-        <div>
-          <CardHeader className="custom-card-header">
-            <div className="custom-card-style-r1">
-              <h3>{data.cryptoName}</h3>
-            </div>
-            <div
-              className="card-top-box"
-              style={{
-                backgroundColor: Math.sign(profit) > 0 ? "#43AA8B" : "#F94144",
-              }}
-            >
-              {Math.sign(profit) > 0 ? (
-                <span
-                  style={{
-                    fontSize: "18px",
-                  }}
-                >
-                  PROFIT
-                </span>
-              ) : (
-                <span
-                  style={{
-                    fontSize: "18px",
-                  }}
-                >
-                  LOSS
-                </span>
-              )}
-              <div className="border-bottom"></div>
-              <h3 style={{ fontFamily: "Lato, sans-serif" }}>
-                {percentageGain}%
-              </h3>
-              <h3 style={{ fontFamily: "Lato, sans-serif" }}>
-                ${parseFloat(profit).toLocaleString()}
-              </h3>
-            </div>
-          </CardHeader>
-          <CardBody>
-            <div
-              className="custom-card-body"
-              onClick={() =>
-                onClick({
-                  data: data,
-                  extra: {
-                    profit,
-                    annualYield,
-                    percentageGain,
-                    outData,
-                  },
-                })
-              }
-            >
-              <div>
-                <p>
-                  <span className="purple-backs">Bought</span>
-                  <span style={{ fontFamily: "Lato, sans-serif" }}>
-                    ${data && parseFloat(data.buyingPrice).toLocaleString()}
-                  </span>
-                  {/*    on{" "} {moment(data && data.buyingDate).format("DD MMM YYYY")} */}
-                </p>
-                {!data.notYetSold ? (
-                  <p>
-                    <span className="purple-backs">Sold</span>
-                    <span>
-                      ${data && parseFloat(data.sellingPrice).toLocaleString()}
-                    </span>
-                    {/* on{" "} {moment(data && data.sellingDate).format("DD MMM YYYY")} */}
-                  </p>
-                ) : (
-                  <p>
-                    <span className="purple-backs">SELL</span>
-                    <span>
-                      Not yet sold <br /> Latest :{" "}
-                      <span style={{ fontFamily: "Lato, sans-serif" }}>
-                        ${outData && outData.toFixed(2)}
-                      </span>
-                    </span>
-                  </p>
-                )}
-
-                {/* <p>Annualized Yield: {annualYield}%</p> */}
-              </div>
-              <p>{data && data.reasonForTrade}</p>
-            </div>
-          </CardBody>
+    <AntdCard
+      className="custom-card-style"
+      loading={loading}
+      style={{ marginBottom: width < 500 ? "40px" : "20px" }}
+      // onClick={() => onClick(data)}
+    >
+      <div>
+        <div className="custom-card-header">
+          <div className="custom-card-style-r1">
+            <h3 style={{ padding: "10px" }}>{data.cryptoName}</h3>
+          </div>
           <div
-            className="custom-card-footer"
+            className="card-top-box"
             style={{
-              borderTop:
-                Math.sign(profit) > 0
-                  ? "5px solid #43AA8B"
-                  : "5px solid #F94144",
-              cursor: "initial",
+              backgroundColor: Math.sign(profit) > 0 ? "#43AA8B" : "#F94144",
             }}
           >
-            {/* camera */}
-            <div>
-              {data.screenshot ? (
-                <CameraOutlined
-                  className="card-icon-style"
-                  style={{ marginRight: "10px" }}
-                />
-              ) : (
-                <span></span>
-              )}
-              {data.comments && data.comments.length > 0 && (
-                <>
-                  {" "}
-                  <CommentOutlined className="card-icon-style" />{" "}
-                  <span
-                    style={{
-                      color: "#fff",
-                      fontSize: "16px",
-                      marginLeft: "8px",
-                      fontFamily: "Lato, sans-serif",
-                    }}
-                  >
-                    {data.comments.length}
-                  </span>{" "}
-                </>
-              )}
-            </div>
-            {localStorage.getItem("jwtToken") ? (
-              <TwitterShareButton
-                url={"https//cryptowins.co"}
-                title={getTitleStringForTwitter()}
+            {Math.sign(profit) > 0 ? (
+              <span
+                style={{
+                  fontSize: "18px",
+                }}
               >
-                <TwitterIcon size={32} round={true} />
-              </TwitterShareButton>
+                PROFIT
+              </span>
+            ) : (
+              <span
+                style={{
+                  fontSize: "18px",
+                }}
+              >
+                LOSS
+              </span>
+            )}
+            <div className="border-bottom"></div>
+            <h3 style={{ fontFamily: "Lato, sans-serif" }}>
+              {percentageGain}%
+            </h3>
+            <h3 style={{ fontFamily: "Lato, sans-serif" }}>
+              ${parseFloat(profit).toLocaleString()}
+            </h3>
+          </div>
+        </div>
+        <div>
+          <div
+            className="custom-card-body"
+            onClick={() =>
+              onClick({
+                data: data,
+                extra: {
+                  profit,
+                  annualYield,
+                  percentageGain,
+                  outData,
+                },
+              })
+            }
+          >
+            <div>
+              <p>
+                <span className="purple-backs">Bought</span>
+                <span style={{ fontFamily: "Lato, sans-serif" }}>
+                  ${data && parseFloat(data.buyingPrice).toLocaleString()}
+                </span>
+                {/*    on{" "} {moment(data && data.buyingDate).format("DD MMM YYYY")} */}
+              </p>
+              {!data.notYetSold ? (
+                <p>
+                  <span className="purple-backs">Sold</span>
+                  <span>
+                    ${data && parseFloat(data.sellingPrice).toLocaleString()}
+                  </span>
+                  {/* on{" "} {moment(data && data.sellingDate).format("DD MMM YYYY")} */}
+                </p>
+              ) : (
+                <p>
+                  <span className="purple-backs">SELL</span>
+                  <span>
+                    Not yet sold <br /> Latest :{" "}
+                    <span style={{ fontFamily: "Lato, sans-serif" }}>
+                      ${outData && outData.toFixed(2)}
+                    </span>
+                  </span>
+                </p>
+              )}
+
+              {/* <p>Annualized Yield: {annualYield}%</p> */}
+            </div>
+            <p>{data && data.reasonForTrade}</p>
+          </div>
+        </div>
+        <div
+          className="custom-card-footer"
+          style={{
+            borderTop:
+              Math.sign(profit) > 0 ? "5px solid #43AA8B" : "5px solid #F94144",
+            cursor: "initial",
+          }}
+        >
+          {/* camera */}
+          <div>
+            {data.screenshot ? (
+              <CameraOutlined
+                className="card-icon-style"
+                style={{ marginRight: "10px" }}
+              />
             ) : (
               <span></span>
             )}
+            {data.comments && data.comments.length > 0 && (
+              <>
+                {" "}
+                <CommentOutlined className="card-icon-style" />{" "}
+                <span
+                  style={{
+                    color: "#fff",
+                    fontSize: "16px",
+                    marginLeft: "8px",
+                    fontFamily: "Lato, sans-serif",
+                  }}
+                >
+                  {data.comments.length}
+                </span>{" "}
+              </>
+            )}
+          </div>
+          {localStorage.getItem("jwtToken") ? (
+            <TwitterShareButton
+              url={"https//cryptowins.co"}
+              title={getTitleStringForTwitter()}
+            >
+              <TwitterIcon size={32} round={true} />
+            </TwitterShareButton>
+          ) : (
+            <span></span>
+          )}
 
-            <div>
-              <p style={{ textAlign: "right", color: "#fff" }}>
-                @{data && data._user && data._user.username}
-              </p>
-              {localStorage.getItem("jwtToken") && getSubscribtionButton()}
-            </div>
+          <div>
+            <p style={{ textAlign: "right", color: "#fff" }}>
+              @{data && data._user && data._user.username}
+            </p>
+            {localStorage.getItem("jwtToken") && getSubscribtionButton()}
           </div>
         </div>
-      </MUICARD>
-    </div>
+      </div>
+    </AntdCard>
   );
 }
 

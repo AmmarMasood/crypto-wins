@@ -1,24 +1,13 @@
-import React, { useState, useEffect, useContext, isValidElement } from "react";
-import { Button, Form, Input, Checkbox, DatePicker, Select } from "antd";
-import {
-  CloseCircleOutlined,
-  LoadingOutlined,
-  BellOutlined,
-} from "@ant-design/icons";
-import AllCryptos from "../../Data/AllCryptos.json";
+import React, { useState, useEffect, useContext } from "react";
+import { Button, Form, Input, Card } from "antd";
+import { CloseCircleOutlined, LoadingOutlined } from "@ant-design/icons";
+
 import ImageUploading from "react-images-uploading";
 import moment from "moment";
-import {
-  addComments,
-  createTrade,
-  updateTrade,
-} from "../../Services/tradeForm";
+import { addComments, updateTrade } from "../../Services/tradeForm";
 import { userInfoContext } from "../../Contexts/UserStore";
 import { subToUser, unsubToUser } from "../../Services/users";
 import { Link } from "react-router-dom";
-import Card from "../../Components/MaterialUI/Card/Card.js";
-import CardHeader from "../../Components/MaterialUI/Card/CardHeader.js";
-import CardBody from "../../Components/MaterialUI/Card/CardBody.js";
 import Modal from "react-modal";
 import useWindowDimensions from "../../Helpers/useWindowDimensions";
 
@@ -265,7 +254,7 @@ function EditTradeForm({
         style={{
           marginBottom: "0",
           height: !localStorage.getItem("jwtToken") && "100%",
-          backgroundColor: "#272A3E",
+          background: "#272A3E",
           color: "#fff",
 
           // border:"2px solid red"
@@ -276,6 +265,7 @@ function EditTradeForm({
             overflowY: "scroll",
             height: height > 1000 ? "fit-content" : "90vh",
             paddingTop: "50px",
+            background: "#272A3E",
           }}
         >
           <div className="custom-card-explainer-header">

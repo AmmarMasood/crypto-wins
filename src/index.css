@@ -1,51 +1,59 @@
-@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap");
 body {
   margin: 0;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-color: #1E1E2B !important;
-  font-family: 'Roboto', sans-serif;
+  background-color: #1e1e2b !important;
+  font-family: "Roboto", sans-serif;
 }
 
 code {
-  font-family: 'Roboto', sans-serif;
+  font-family: "Roboto", sans-serif;
 }
 
-.ant-layout-content{
-  background-color: #1E1E2B;
+.ant-layout-content {
+  background-color: #1e1e2b;
   min-height: 100vh !important;
-  font-family: 'Roboto', sans-serif;
+  font-family: "Roboto", sans-serif;
 }
-.ant-layout-sider-zero-width-trigger{
-  background:#f5864a;
+.ant-layout-sider-zero-width-trigger {
+  background: #f5864a;
 }
-.ReactModal__Overlay--after-open{
-   z-index: 10 !important;
+.ReactModal__Overlay--after-open {
+  z-index: 10 !important;
 }
-.ReactModal__Content .ReactModal__Content--after-open{
-
+.ReactModal__Content .ReactModal__Content--after-open {
   /* border: 2px solid green; */
 }
-.ant-form-item-label > label{
+.ant-form-item-label > label {
   color: #fff !important;
 }
-.pg-viewer-wrapper .document-container{
+.pg-viewer-wrapper .document-container {
   overflow-y: scroll;
   height: 80vh;
 }
 
-  @media screen and (max-width: 700px) {
-    .pg-viewer-wrapper .pg-viewer{
-    width:500px !important
+.ant-card-bordered {
+  border: none !important;
+  border-radius: 10px !important;
+}
+
+.ant-card-body {
+  padding: 20px 0 !important;
+}
+
+@media screen and (max-width: 700px) {
+  .pg-viewer-wrapper .pg-viewer {
+    width: 500px !important;
   }
 }
 @media screen and (max-width: 500px) {
-  .pg-viewer-wrapper .pg-viewer{
-  width:300px !important
-}
+  .pg-viewer-wrapper .pg-viewer {
+    width: 300px !important;
+  }
 }
 
-.ant-modal-body{
-  background-color:#272A3E !important
+.ant-modal-body {
+  background-color: #272a3e !important;
 }
