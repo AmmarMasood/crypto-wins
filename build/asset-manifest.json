@@ -1,19 +1,19 @@
 {
   "files": {
     "main.css": "/static/css/main.bb5ed3bc.chunk.css",
-    "main.js": "/static/js/main.024f8dd8.chunk.js",
-    "main.js.map": "/static/js/main.024f8dd8.chunk.js.map",
+    "main.js": "/static/js/main.3dd27b03.chunk.js",
+    "main.js.map": "/static/js/main.3dd27b03.chunk.js.map",
     "runtime-main.js": "/static/js/runtime-main.48971481.js",
     "runtime-main.js.map": "/static/js/runtime-main.48971481.js.map",
     "static/css/2.81b0985c.chunk.css": "/static/css/2.81b0985c.chunk.css",
-    "static/js/2.bf130e4f.chunk.js": "/static/js/2.bf130e4f.chunk.js",
-    "static/js/2.bf130e4f.chunk.js.map": "/static/js/2.bf130e4f.chunk.js.map",
+    "static/js/2.c03f30ca.chunk.js": "/static/js/2.c03f30ca.chunk.js",
+    "static/js/2.c03f30ca.chunk.js.map": "/static/js/2.c03f30ca.chunk.js.map",
     "static/js/3.5a7e296b.chunk.js": "/static/js/3.5a7e296b.chunk.js",
     "static/js/3.5a7e296b.chunk.js.map": "/static/js/3.5a7e296b.chunk.js.map",
     "index.html": "/index.html",
     "static/css/2.81b0985c.chunk.css.map": "/static/css/2.81b0985c.chunk.css.map",
     "static/css/main.bb5ed3bc.chunk.css.map": "/static/css/main.bb5ed3bc.chunk.css.map",
-    "static/js/2.bf130e4f.chunk.js.LICENSE.txt": "/static/js/2.bf130e4f.chunk.js.LICENSE.txt",
+    "static/js/2.c03f30ca.chunk.js.LICENSE.txt": "/static/js/2.c03f30ca.chunk.js.LICENSE.txt",
     "static/media/CryptoWins Privacy Policy.b5de11bd.docx": "/static/media/CryptoWins Privacy Policy.b5de11bd.docx",
     "static/media/Terms of Use.6075f800.docx": "/static/media/Terms of Use.6075f800.docx",
     "static/media/bell.ac7d0719.svg": "/static/media/bell.ac7d0719.svg",
@@ -22,8 +22,8 @@
   "entrypoints": [
     "static/js/runtime-main.48971481.js",
     "static/css/2.81b0985c.chunk.css",
-    "static/js/2.bf130e4f.chunk.js",
+    "static/js/2.c03f30ca.chunk.js",
     "static/css/main.bb5ed3bc.chunk.css",
-    "static/js/main.024f8dd8.chunk.js"
+    "static/js/main.3dd27b03.chunk.js"
   ]
 }

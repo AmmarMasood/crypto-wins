@@ -18,6 +18,7 @@ import ManageCryptos from "../../Components/Admin/ManageCryptos";
 import { TwitterIcon } from "react-share";
 import TermsAndCondition from "../TermsAndCondition/TermsAndCondition";
 import useWindowDimensions from "../../Helpers/useWindowDimensions";
+import ManageIntents from "../../Components/Admin/ManageIntents";
 
 const { Header, Content, Footer, Sider } = Layout;
 
@@ -82,6 +83,17 @@ function AdminDashboard(props) {
         </div>
         <div
           className="admin-dashboard-selector"
+          onClick={() => setPart(5)}
+          style={{
+            backgroundColor: part === 5 ? "#f5864a" : "transparent",
+            color: "#fff",
+          }}
+        >
+          <ProfileOutlined style={{ marginRight: "10px" }} />
+          Manage Intents
+        </div>
+        <div
+          className="admin-dashboard-selector"
           onClick={() => setPart(3)}
           style={{
             backgroundColor: part === 3 ? "#f5864a" : "transparent",
@@ -127,6 +139,7 @@ function AdminDashboard(props) {
           {part === 2 && <ProfileSetting />}
           {part === 3 && <ManageCryptos />}
           {part === 4 && <TermsAndCondition />}
+          {part === 5 && <ManageIntents />}
         </Content>
         {/* <Footer style={{ textAlign: "center" }}>©CryptoWins 2021</Footer>
          */}

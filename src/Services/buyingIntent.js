@@ -77,3 +77,32 @@ export async function unsubscribeToIntent(intentId) {
     return { success: false, res: "unable to unsubscribe to intent" };
   }
 }
+
+export async function deleteIntent(id) {
+  try {
+    setAuthToken(localStorage.getItem("jwtToken"));
+    const res = await axios.delete(
+      `${process.env.REACT_APP_SERVER}/api/intent/${id}`
+    );
+    openNotificationWithIcon("success", "Intent deleted successfully");
+    return { success: true, res: res.data };
+  } catch (err) {
+    openNotificationWithIcon("error", "Unable to delete intent");
+    return { success: false, res: "unable to delete user" };
+  }
+}
+
+export async function updateIntent(id, data) {
+  try {
+    setAuthToken(localStorage.getItem("jwtToken"));
+    const res = await axios.put(
+      `${process.env.REACT_APP_SERVER}/api/intent/${id}`,
+      data
+    );
+    openNotificationWithIcon("success", "Intent updated successfully");
+    return { success: true, res: res.data };
+  } catch (err) {
+    openNotificationWithIcon("error", "Unable to update intent");
+    return { success: false, res: "unable to delete intent" };
+  }
+}
