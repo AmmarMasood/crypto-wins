@@ -73,7 +73,14 @@ function MainDashboard({
         style={{ padding: width < 500 ? "20px 0" : "20px" }}
       >
         {loading ? (
-          <div style={{ textAlign: "center", width: "100%" }}>
+          <div
+            style={{
+              position: "absolute",
+              top: "50%",
+              left: "50%",
+              transform: "translate(-50%, -50%)",
+            }}
+          >
             <LoadingOutlined style={{ fontSize: "30px", color: "#f78641" }} />
           </div>
         ) : (
